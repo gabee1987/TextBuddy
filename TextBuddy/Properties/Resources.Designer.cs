@@ -65,8 +65,26 @@ namespace TextBuddy.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap open_file {
             get {
-                object obj = ResourceManager.GetObject("open-file", resourceCulture);
+                object obj = ResourceManager.GetObject("open_file", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string regexName {
+            get {
+                return ResourceManager.GetString("regexName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string regexPatterns {
+            get {
+                return ResourceManager.GetString("regexPatterns", resourceCulture);
             }
         }
         
@@ -75,7 +93,7 @@ namespace TextBuddy.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap search_for_file {
             get {
-                object obj = ResourceManager.GetObject("search-for-file", resourceCulture);
+                object obj = ResourceManager.GetObject("search_for_file", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

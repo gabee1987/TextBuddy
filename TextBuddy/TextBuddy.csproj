@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IOManager.cs" />
     <Compile Include="TextBuddyMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +88,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\System_search_icon.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\regexName.txt" />
+    <Content Include="Resources\regexPatterns.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
