@@ -82,7 +82,7 @@
             // 
             // OpenFileToolStripMenuItem
             // 
-            this.OpenFileToolStripMenuItem.Image = global::TextBuddy.Properties.Resources.Open_document;
+            this.OpenFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenFileToolStripMenuItem.Image")));
             this.OpenFileToolStripMenuItem.Name = "OpenFileToolStripMenuItem";
             this.OpenFileToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.OpenFileToolStripMenuItem.Text = "Open File";
@@ -162,13 +162,12 @@
             // LockPictureBox
             // 
             this.LockPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.LockPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LockPictureBox.Image = global::TextBuddy.Properties.Resources.open_lock_512;
             this.LockPictureBox.Location = new System.Drawing.Point(1101, 3);
             this.LockPictureBox.Name = "LockPictureBox";
             this.LockPictureBox.Size = new System.Drawing.Size(21, 21);
             this.LockPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.LockPictureBox.TabIndex = 14;
+            this.LockPictureBox.TabIndex = 1;
             this.LockPictureBox.TabStop = false;
             this.LockPictureBox.Click += new System.EventHandler(this.LockPictureBox_Click);
             // 

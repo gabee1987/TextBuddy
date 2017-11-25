@@ -22,7 +22,7 @@ namespace TextBuddy
 
         private void TextBuddyMainWindow_Load(object sender, EventArgs e)
         {
-            
+        
         }
 
         private void OpenFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,7 +127,6 @@ namespace TextBuddy
 
         private void LockPictureBox_Click(object sender, EventArgs e)
         {
-            Image image = Image.FromFile("open_lock-512.png");
             if (RegexPatternTextBox.Enabled == true)
             {
                 LockPictureBox.Image = Properties.Resources.close_lock_512;
@@ -135,6 +134,7 @@ namespace TextBuddy
             }
             else
             {
+                LockPictureBox.Image = Properties.Resources.open_lock_512;
                 RegexPatternTextBox.Enabled = true;
             }
         }
