@@ -48,5 +48,62 @@ namespace TextBuddy
             SelectPatternComboBox.DisplayMember = "Key";
             SelectPatternComboBox.ValueMember = "Value";
         }
+
+        private void ReplaceStartButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SelectPatternComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // get ComboBox from sender
+            ComboBox comboBox = (ComboBox)sender;
+
+            // get selected KVP
+            KeyValuePair<String, String> selectedEntry = (KeyValuePair<String, String>)comboBox.SelectedItem;
+
+            // get selected Key
+            String selectedValue = selectedEntry.Value;
+
+            RegexPatternTextBox.Text = selectedValue;
+        }
+
+        private void SearchMatchesButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PreviewOriginalRichTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (PreviewOriginalRichTextBox.TextLength > 0)
+            {
+                SearchMatchesButton.Enabled = true;
+                SearchAndGetButton.Enabled = true;
+            }
+            else if (PreviewOriginalRichTextBox.TextLength <= 0)
+            {
+                SearchMatchesButton.Enabled = false;
+                SearchAndGetButton.Enabled = false;
+            }
+        }
+
+        private void SearchAndGetButton_Click(object sender, EventArgs e)
+        {
+            if (SearchAndGetButton.Enabled == true)
+            {
+                int matchCount = 0;
+                string documentToSearch = PreviewOriginalRichTextBox.Text;
+                string pattern = RegexPatternTextBox.Text;
+                string foundMatchesString = "";
+                List<string> foundMatches = RegexManager.SearchAndGetMatches(documentToSearch, pattern);
+                foreach (string match in foundMatches)
+                {
+                    foundMatchesString += match + "\n";
+                    matchCount++;
+                }
+                PreviewModifiedRichTextBox.Text = foundMatchesString;
+                FoundMatchesTextBox.Text = matchCount.ToString();
+            }
+        }
     }
 }

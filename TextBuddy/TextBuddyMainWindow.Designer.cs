@@ -31,24 +31,29 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.OpenFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchForFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SelectPatternComboBox = new System.Windows.Forms.ComboBox();
             this.SelectPatternLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.RegexPatternTextBox = new System.Windows.Forms.TextBox();
             this.AddPatternLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SearchAndGetButton = new System.Windows.Forms.Button();
+            this.SearchMatchesButton = new System.Windows.Forms.Button();
+            this.ReplaceStartButton = new System.Windows.Forms.Button();
+            this.DoneReplaceButton = new System.Windows.Forms.Button();
+            this.DonePatternButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ReplaceWithTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SplitContainer = new System.Windows.Forms.SplitContainer();
+            this.PreviewOriginalRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.PreviewModifiedRichTextBox = new System.Windows.Forms.RichTextBox();
             this.PreviewGroupBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.OriginalLabel = new System.Windows.Forms.Label();
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.DonePatternButton = new System.Windows.Forms.Button();
-            this.DoneReplaceButton = new System.Windows.Forms.Button();
-            this.ReplaceStartButton = new System.Windows.Forms.Button();
-            this.PreviewOriginalRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.PreviewModifiedRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.FoundMatchesLabel = new System.Windows.Forms.Label();
+            this.FoundMatchesTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -63,7 +68,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenFileToolStripMenuItem,
-            this.searchForFileToolStripMenuItem});
+            this.searchForFileToolStripMenuItem,
+            this.saveFileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1185, 24);
@@ -85,6 +91,13 @@
             this.searchForFileToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
             this.searchForFileToolStripMenuItem.Text = "Search for File";
             // 
+            // saveFileToolStripMenuItem
+            // 
+            this.saveFileToolStripMenuItem.Image = global::TextBuddy.Properties.Resources.Save_file;
+            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.saveFileToolStripMenuItem.Text = "Save File";
+            // 
             // SelectPatternComboBox
             // 
             this.SelectPatternComboBox.FormattingEnabled = true;
@@ -92,6 +105,7 @@
             this.SelectPatternComboBox.Name = "SelectPatternComboBox";
             this.SelectPatternComboBox.Size = new System.Drawing.Size(177, 21);
             this.SelectPatternComboBox.TabIndex = 1;
+            this.SelectPatternComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectPatternComboBox_SelectedIndexChanged);
             // 
             // SelectPatternLabel
             // 
@@ -102,39 +116,111 @@
             this.SelectPatternLabel.TabIndex = 2;
             this.SelectPatternLabel.Text = "Select Pattern";
             // 
-            // textBox1
+            // RegexPatternTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(354, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(741, 21);
-            this.textBox1.TabIndex = 3;
+            this.RegexPatternTextBox.Location = new System.Drawing.Point(354, 3);
+            this.RegexPatternTextBox.Multiline = true;
+            this.RegexPatternTextBox.Name = "RegexPatternTextBox";
+            this.RegexPatternTextBox.Size = new System.Drawing.Size(741, 21);
+            this.RegexPatternTextBox.TabIndex = 3;
             // 
             // AddPatternLabel
             // 
             this.AddPatternLabel.AutoSize = true;
-            this.AddPatternLabel.Location = new System.Drawing.Point(285, 6);
+            this.AddPatternLabel.Location = new System.Drawing.Point(273, 6);
             this.AddPatternLabel.Name = "AddPatternLabel";
-            this.AddPatternLabel.Size = new System.Drawing.Size(63, 13);
+            this.AddPatternLabel.Size = new System.Drawing.Size(75, 13);
             this.AddPatternLabel.TabIndex = 4;
-            this.AddPatternLabel.Text = "Add Pattern";
+            this.AddPatternLabel.Text = "Regex Pattern";
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.FoundMatchesTextBox);
+            this.panel1.Controls.Add(this.FoundMatchesLabel);
+            this.panel1.Controls.Add(this.SearchAndGetButton);
+            this.panel1.Controls.Add(this.SearchMatchesButton);
             this.panel1.Controls.Add(this.ReplaceStartButton);
             this.panel1.Controls.Add(this.DoneReplaceButton);
             this.panel1.Controls.Add(this.DonePatternButton);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.ReplaceWithTextBox);
             this.panel1.Controls.Add(this.SelectPatternComboBox);
             this.panel1.Controls.Add(this.AddPatternLabel);
             this.panel1.Controls.Add(this.SelectPatternLabel);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.RegexPatternTextBox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1155, 80);
             this.panel1.TabIndex = 5;
+            // 
+            // SearchAndGetButton
+            // 
+            this.SearchAndGetButton.Enabled = false;
+            this.SearchAndGetButton.Location = new System.Drawing.Point(929, 54);
+            this.SearchAndGetButton.Name = "SearchAndGetButton";
+            this.SearchAndGetButton.Size = new System.Drawing.Size(108, 23);
+            this.SearchAndGetButton.TabIndex = 11;
+            this.SearchAndGetButton.Text = "Search and Get";
+            this.SearchAndGetButton.UseVisualStyleBackColor = true;
+            this.SearchAndGetButton.Click += new System.EventHandler(this.SearchAndGetButton_Click);
+            // 
+            // SearchMatchesButton
+            // 
+            this.SearchMatchesButton.Enabled = false;
+            this.SearchMatchesButton.Location = new System.Drawing.Point(815, 54);
+            this.SearchMatchesButton.Name = "SearchMatchesButton";
+            this.SearchMatchesButton.Size = new System.Drawing.Size(108, 23);
+            this.SearchMatchesButton.TabIndex = 10;
+            this.SearchMatchesButton.Text = "Search for Matches";
+            this.SearchMatchesButton.UseVisualStyleBackColor = true;
+            this.SearchMatchesButton.Click += new System.EventHandler(this.SearchMatchesButton_Click);
+            // 
+            // ReplaceStartButton
+            // 
+            this.ReplaceStartButton.Enabled = false;
+            this.ReplaceStartButton.Location = new System.Drawing.Point(1043, 54);
+            this.ReplaceStartButton.Name = "ReplaceStartButton";
+            this.ReplaceStartButton.Size = new System.Drawing.Size(108, 23);
+            this.ReplaceStartButton.TabIndex = 9;
+            this.ReplaceStartButton.Text = "Replace Matches";
+            this.ReplaceStartButton.UseVisualStyleBackColor = true;
+            this.ReplaceStartButton.Click += new System.EventHandler(this.ReplaceStartButton_Click);
+            // 
+            // DoneReplaceButton
+            // 
+            this.DoneReplaceButton.Location = new System.Drawing.Point(1101, 29);
+            this.DoneReplaceButton.Name = "DoneReplaceButton";
+            this.DoneReplaceButton.Size = new System.Drawing.Size(50, 23);
+            this.DoneReplaceButton.TabIndex = 8;
+            this.DoneReplaceButton.Text = "Done";
+            this.DoneReplaceButton.UseVisualStyleBackColor = true;
+            // 
+            // DonePatternButton
+            // 
+            this.DonePatternButton.Location = new System.Drawing.Point(1101, 2);
+            this.DonePatternButton.Name = "DonePatternButton";
+            this.DonePatternButton.Size = new System.Drawing.Size(50, 23);
+            this.DonePatternButton.TabIndex = 7;
+            this.DonePatternButton.Text = "Done";
+            this.DonePatternButton.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(273, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Replace With:";
+            // 
+            // ReplaceWithTextBox
+            // 
+            this.ReplaceWithTextBox.Location = new System.Drawing.Point(354, 30);
+            this.ReplaceWithTextBox.Multiline = true;
+            this.ReplaceWithTextBox.Name = "ReplaceWithTextBox";
+            this.ReplaceWithTextBox.Size = new System.Drawing.Size(741, 21);
+            this.ReplaceWithTextBox.TabIndex = 5;
             // 
             // groupBox1
             // 
@@ -162,6 +248,26 @@
             this.SplitContainer.Size = new System.Drawing.Size(1179, 444);
             this.SplitContainer.SplitterDistance = 566;
             this.SplitContainer.TabIndex = 7;
+            // 
+            // PreviewOriginalRichTextBox
+            // 
+            this.PreviewOriginalRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PreviewOriginalRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.PreviewOriginalRichTextBox.Name = "PreviewOriginalRichTextBox";
+            this.PreviewOriginalRichTextBox.Size = new System.Drawing.Size(566, 444);
+            this.PreviewOriginalRichTextBox.TabIndex = 10;
+            this.PreviewOriginalRichTextBox.Text = "";
+            this.PreviewOriginalRichTextBox.WordWrap = false;
+            this.PreviewOriginalRichTextBox.TextChanged += new System.EventHandler(this.PreviewOriginalRichTextBox_TextChanged);
+            // 
+            // PreviewModifiedRichTextBox
+            // 
+            this.PreviewModifiedRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PreviewModifiedRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.PreviewModifiedRichTextBox.Name = "PreviewModifiedRichTextBox";
+            this.PreviewModifiedRichTextBox.Size = new System.Drawing.Size(609, 444);
+            this.PreviewModifiedRichTextBox.TabIndex = 0;
+            this.PreviewModifiedRichTextBox.Text = "";
             // 
             // PreviewGroupBox
             // 
@@ -198,68 +304,22 @@
             // 
             this.OpenFileDialog.FileName = "OpenFileDialog";
             // 
-            // label2
+            // FoundMatchesLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(273, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Replace With:";
+            this.FoundMatchesLabel.AutoSize = true;
+            this.FoundMatchesLabel.Location = new System.Drawing.Point(71, 33);
+            this.FoundMatchesLabel.Name = "FoundMatchesLabel";
+            this.FoundMatchesLabel.Size = new System.Drawing.Size(84, 13);
+            this.FoundMatchesLabel.TabIndex = 12;
+            this.FoundMatchesLabel.Text = "Found Matches:";
             // 
-            // textBox2
+            // FoundMatchesTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(354, 30);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(741, 21);
-            this.textBox2.TabIndex = 5;
-            // 
-            // DonePatternButton
-            // 
-            this.DonePatternButton.Location = new System.Drawing.Point(1101, 2);
-            this.DonePatternButton.Name = "DonePatternButton";
-            this.DonePatternButton.Size = new System.Drawing.Size(50, 23);
-            this.DonePatternButton.TabIndex = 7;
-            this.DonePatternButton.Text = "Done";
-            this.DonePatternButton.UseVisualStyleBackColor = true;
-            // 
-            // DoneReplaceButton
-            // 
-            this.DoneReplaceButton.Location = new System.Drawing.Point(1101, 29);
-            this.DoneReplaceButton.Name = "DoneReplaceButton";
-            this.DoneReplaceButton.Size = new System.Drawing.Size(50, 23);
-            this.DoneReplaceButton.TabIndex = 8;
-            this.DoneReplaceButton.Text = "Done";
-            this.DoneReplaceButton.UseVisualStyleBackColor = true;
-            // 
-            // ReplaceStartButton
-            // 
-            this.ReplaceStartButton.Location = new System.Drawing.Point(1076, 54);
-            this.ReplaceStartButton.Name = "ReplaceStartButton";
-            this.ReplaceStartButton.Size = new System.Drawing.Size(75, 23);
-            this.ReplaceStartButton.TabIndex = 9;
-            this.ReplaceStartButton.Text = "Replace";
-            this.ReplaceStartButton.UseVisualStyleBackColor = true;
-            // 
-            // PreviewOriginalRichTextBox
-            // 
-            this.PreviewOriginalRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PreviewOriginalRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.PreviewOriginalRichTextBox.Name = "PreviewOriginalRichTextBox";
-            this.PreviewOriginalRichTextBox.Size = new System.Drawing.Size(566, 444);
-            this.PreviewOriginalRichTextBox.TabIndex = 10;
-            this.PreviewOriginalRichTextBox.Text = "";
-            this.PreviewOriginalRichTextBox.WordWrap = false;
-            // 
-            // PreviewModifiedRichTextBox
-            // 
-            this.PreviewModifiedRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PreviewModifiedRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.PreviewModifiedRichTextBox.Name = "PreviewModifiedRichTextBox";
-            this.PreviewModifiedRichTextBox.Size = new System.Drawing.Size(609, 444);
-            this.PreviewModifiedRichTextBox.TabIndex = 0;
-            this.PreviewModifiedRichTextBox.Text = "";
+            this.FoundMatchesTextBox.Enabled = false;
+            this.FoundMatchesTextBox.Location = new System.Drawing.Point(161, 29);
+            this.FoundMatchesTextBox.Name = "FoundMatchesTextBox";
+            this.FoundMatchesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FoundMatchesTextBox.TabIndex = 13;
             // 
             // TextBuddyMainWindow
             // 
@@ -296,7 +356,7 @@
         private System.Windows.Forms.ToolStripMenuItem searchForFileToolStripMenuItem;
         private System.Windows.Forms.ComboBox SelectPatternComboBox;
         private System.Windows.Forms.Label SelectPatternLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox RegexPatternTextBox;
         private System.Windows.Forms.Label AddPatternLabel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -309,9 +369,14 @@
         private System.Windows.Forms.Button DoneReplaceButton;
         private System.Windows.Forms.Button DonePatternButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ReplaceWithTextBox;
         private System.Windows.Forms.RichTextBox PreviewOriginalRichTextBox;
         private System.Windows.Forms.RichTextBox PreviewModifiedRichTextBox;
+        private System.Windows.Forms.Button SearchMatchesButton;
+        private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
+        private System.Windows.Forms.Button SearchAndGetButton;
+        private System.Windows.Forms.TextBox FoundMatchesTextBox;
+        private System.Windows.Forms.Label FoundMatchesLabel;
     }
 }
 

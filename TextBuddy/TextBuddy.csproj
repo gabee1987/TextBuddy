@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IOManager.cs" />
+    <Compile Include="RegexManager.cs" />
     <Compile Include="TextBuddyMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +94,7 @@
   <ItemGroup>
     <Content Include="Resources\regexName.txt" />
     <Content Include="Resources\regexPatterns.txt" />
+    <None Include="Resources\Save-file.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

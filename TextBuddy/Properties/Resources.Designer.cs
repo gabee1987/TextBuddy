@@ -71,7 +71,7 @@ namespace TextBuddy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Date d/m/yy and dd/mm/yyyy.
         /// </summary>
         internal static string regexName {
             get {
@@ -85,6 +85,16 @@ namespace TextBuddy.Properties {
         internal static string regexPatterns {
             get {
                 return ResourceManager.GetString("regexPatterns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_file {
+            get {
+                object obj = ResourceManager.GetObject("Save-file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
