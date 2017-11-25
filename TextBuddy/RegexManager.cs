@@ -35,12 +35,37 @@ namespace TextBuddy
             }
         }
 
-        private static string ReformatDate(string dateInput)
+        public static int CountFoundMatches(string input, string searchPattern)
         {
-            string pattern = @"([12]\d{3}/(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01]))";
-            string foundDate = DateTime.Parse(Regex.Match(dateInput, pattern).Value).ToString("MM/dd/yyyy");
-
-            return Regex.Replace(dateInput, pattern, foundDate);
+            return Regex.Matches(input, searchPattern).Count;
         }
+
+        public static string FormatDate(string input, string pattern, string newDateFormat)
+        {
+            List<string> splittedDocument = input.Split('\n').Select(s => s.Trim()).ToList();
+            string result = "";
+            Regex regex = new Regex(pattern);
+
+            foreach (String line in splittedDocument)
+            {
+                result += ReformatDate(line, pattern, newDateFormat) + "\n";
+            }
+            return result;
+        }
+
+        private static string ReformatDate(string dateInput, string searchPattern, string newDateFormat)
+        {
+            try
+            {
+                string foundDate = DateTime.Parse(Regex.Match(dateInput, searchPattern).Value).ToString(newDateFormat);
+                return Regex.Replace(dateInput, searchPattern, foundDate);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return dateInput;
+        }
+
     }
 }

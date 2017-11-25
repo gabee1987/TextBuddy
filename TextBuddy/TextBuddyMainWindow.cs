@@ -17,12 +17,12 @@ namespace TextBuddy
         public TextBuddyMainWindow()
         {
             InitializeComponent();
-            PopulateSelectPatternComboBox();
         }
 
         private void TextBuddyMainWindow_Load(object sender, EventArgs e)
         {
-        
+            PopulateSelectPatternComboBox();
+            PopulateDateFormatComboBox();
         }
 
         private void OpenFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,6 +35,7 @@ namespace TextBuddy
                 this.Text += "    Opened File: " + openedFileName;
                 string openedFile = IOManager.OpenTextFile(openedFileName);
                 PreviewOriginalRichTextBox.Text = openedFile;
+                ConvertDateFormatButton.Enabled = true;
             }
         }
 
@@ -47,6 +48,19 @@ namespace TextBuddy
             SelectPatternComboBox.DataSource = new BindingSource(comboboxItems, null);
             SelectPatternComboBox.DisplayMember = "Key";
             SelectPatternComboBox.ValueMember = "Value";
+        }
+
+        private void PopulateDateFormatComboBox()
+        {
+            DateFormatComboBox.Items.Add("MM/dd/yyyy");
+            DateFormatComboBox.Items.Add("MM-dd-yyyy");
+            DateFormatComboBox.Items.Add("MM.dd.yyyy");
+            DateFormatComboBox.Items.Add("dd/MM/yyyy");
+            DateFormatComboBox.Items.Add("dd-MM-yyyy");
+            DateFormatComboBox.Items.Add("dd.MM.yyyy");
+            DateFormatComboBox.Items.Add("yyyy/MM/dd");
+            DateFormatComboBox.Items.Add("yyyy-MM-dd");
+            DateFormatComboBox.Items.Add("yyyy.MM.dd");
         }
 
         private void ReplaceStartButton_Click(object sender, EventArgs e)
@@ -68,12 +82,21 @@ namespace TextBuddy
             // get selected Key
             String selectedValue = selectedEntry.Value;
 
-            RegexPatternTextBox.Text = selectedValue;
+            if (RegexPatternTextBox.Enabled == true)
+            {
+                RegexPatternTextBox.Text = selectedValue;
+            }
+            else
+            {
+                ReplaceWithTextBox.Text = selectedValue;
+            }
         }
 
         private void SearchMatchesButton_Click(object sender, EventArgs e)
         {
-
+            string documentToSearch = PreviewOriginalRichTextBox.Text;
+            string pattern = RegexPatternTextBox.Text;
+            FoundMatchesTextBox.Text = RegexManager.CountFoundMatches(documentToSearch, pattern).ToString();
         }
 
         private void PreviewOriginalRichTextBox_TextChanged(object sender, EventArgs e)
@@ -136,6 +159,18 @@ namespace TextBuddy
             {
                 LockPictureBox.Image = Properties.Resources.open_lock_512;
                 RegexPatternTextBox.Enabled = true;
+            }
+        }
+
+        private void ConvertDateFormatButton_Click(object sender, EventArgs e)
+        {
+            if (PreviewOriginalRichTextBox.Text.Length > 0)
+            {
+                string pattern = RegexPatternTextBox.Text;
+                string document = PreviewOriginalRichTextBox.Text;
+                string dateFormat = DateFormatComboBox.SelectedItem.ToString();
+                
+                PreviewModifiedRichTextBox.Text = RegexManager.FormatDate(document, pattern, dateFormat);
             }
         }
     }

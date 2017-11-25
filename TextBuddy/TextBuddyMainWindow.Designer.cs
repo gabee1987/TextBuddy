@@ -57,6 +57,9 @@
             this.OriginalLabel = new System.Windows.Forms.Label();
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
+            this.DateFormatComboBox = new System.Windows.Forms.ComboBox();
+            this.DateFormatlabel = new System.Windows.Forms.Label();
+            this.ConvertDateFormatButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LockPictureBox)).BeginInit();
@@ -140,6 +143,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ConvertDateFormatButton);
+            this.panel1.Controls.Add(this.DateFormatComboBox);
+            this.panel1.Controls.Add(this.DateFormatlabel);
             this.panel1.Controls.Add(this.LockPictureBox);
             this.panel1.Controls.Add(this.FoundMatchesTextBox);
             this.panel1.Controls.Add(this.FoundMatchesLabel);
@@ -174,7 +180,7 @@
             // FoundMatchesTextBox
             // 
             this.FoundMatchesTextBox.Enabled = false;
-            this.FoundMatchesTextBox.Location = new System.Drawing.Point(161, 29);
+            this.FoundMatchesTextBox.Location = new System.Drawing.Point(654, 57);
             this.FoundMatchesTextBox.Name = "FoundMatchesTextBox";
             this.FoundMatchesTextBox.Size = new System.Drawing.Size(100, 20);
             this.FoundMatchesTextBox.TabIndex = 13;
@@ -182,7 +188,7 @@
             // FoundMatchesLabel
             // 
             this.FoundMatchesLabel.AutoSize = true;
-            this.FoundMatchesLabel.Location = new System.Drawing.Point(71, 33);
+            this.FoundMatchesLabel.Location = new System.Drawing.Point(564, 61);
             this.FoundMatchesLabel.Name = "FoundMatchesLabel";
             this.FoundMatchesLabel.Size = new System.Drawing.Size(84, 13);
             this.FoundMatchesLabel.TabIndex = 12;
@@ -338,6 +344,34 @@
             this.ImageList.Images.SetKeyName(0, "open_lock-512.png");
             this.ImageList.Images.SetKeyName(1, "close_lock-512.png");
             // 
+            // DateFormatComboBox
+            // 
+            this.DateFormatComboBox.FormattingEnabled = true;
+            this.DateFormatComboBox.Location = new System.Drawing.Point(84, 31);
+            this.DateFormatComboBox.Name = "DateFormatComboBox";
+            this.DateFormatComboBox.Size = new System.Drawing.Size(177, 21);
+            this.DateFormatComboBox.TabIndex = 14;
+            // 
+            // DateFormatlabel
+            // 
+            this.DateFormatlabel.AutoSize = true;
+            this.DateFormatlabel.Location = new System.Drawing.Point(16, 34);
+            this.DateFormatlabel.Name = "DateFormatlabel";
+            this.DateFormatlabel.Size = new System.Drawing.Size(65, 13);
+            this.DateFormatlabel.TabIndex = 15;
+            this.DateFormatlabel.Text = "Date Format";
+            // 
+            // ConvertDateFormatButton
+            // 
+            this.ConvertDateFormatButton.Enabled = false;
+            this.ConvertDateFormatButton.Location = new System.Drawing.Point(144, 57);
+            this.ConvertDateFormatButton.Name = "ConvertDateFormatButton";
+            this.ConvertDateFormatButton.Size = new System.Drawing.Size(117, 23);
+            this.ConvertDateFormatButton.TabIndex = 16;
+            this.ConvertDateFormatButton.Text = "Convert Date Format";
+            this.ConvertDateFormatButton.UseVisualStyleBackColor = true;
+            this.ConvertDateFormatButton.Click += new System.EventHandler(this.ConvertDateFormatButton_Click);
+            // 
             // TextBuddyMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,6 +430,9 @@
         private System.Windows.Forms.Label FoundMatchesLabel;
         private System.Windows.Forms.ImageList ImageList;
         private System.Windows.Forms.PictureBox LockPictureBox;
+        private System.Windows.Forms.ComboBox DateFormatComboBox;
+        private System.Windows.Forms.Label DateFormatlabel;
+        private System.Windows.Forms.Button ConvertDateFormatButton;
     }
 }
 
