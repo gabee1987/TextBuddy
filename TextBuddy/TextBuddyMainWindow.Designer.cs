@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextBuddyMainWindow));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.OpenFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchForFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,11 +39,13 @@
             this.RegexPatternTextBox = new System.Windows.Forms.TextBox();
             this.AddPatternLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LockPictureBox = new System.Windows.Forms.PictureBox();
+            this.FoundMatchesTextBox = new System.Windows.Forms.TextBox();
+            this.FoundMatchesLabel = new System.Windows.Forms.Label();
             this.SearchAndGetButton = new System.Windows.Forms.Button();
             this.SearchMatchesButton = new System.Windows.Forms.Button();
             this.ReplaceStartButton = new System.Windows.Forms.Button();
             this.DoneReplaceButton = new System.Windows.Forms.Button();
-            this.DonePatternButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.ReplaceWithTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -52,10 +56,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.OriginalLabel = new System.Windows.Forms.Label();
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.FoundMatchesLabel = new System.Windows.Forms.Label();
-            this.FoundMatchesTextBox = new System.Windows.Forms.TextBox();
+            this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LockPictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer)).BeginInit();
             this.SplitContainer.Panel1.SuspendLayout();
@@ -78,7 +82,7 @@
             // 
             // OpenFileToolStripMenuItem
             // 
-            this.OpenFileToolStripMenuItem.Image = global::TextBuddy.Properties.Resources.open_file;
+            this.OpenFileToolStripMenuItem.Image = global::TextBuddy.Properties.Resources.Open_document;
             this.OpenFileToolStripMenuItem.Name = "OpenFileToolStripMenuItem";
             this.OpenFileToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.OpenFileToolStripMenuItem.Text = "Open File";
@@ -123,6 +127,7 @@
             this.RegexPatternTextBox.Name = "RegexPatternTextBox";
             this.RegexPatternTextBox.Size = new System.Drawing.Size(741, 21);
             this.RegexPatternTextBox.TabIndex = 3;
+            this.RegexPatternTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RegexPatternTextBox_KeyDown);
             // 
             // AddPatternLabel
             // 
@@ -135,13 +140,13 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.LockPictureBox);
             this.panel1.Controls.Add(this.FoundMatchesTextBox);
             this.panel1.Controls.Add(this.FoundMatchesLabel);
             this.panel1.Controls.Add(this.SearchAndGetButton);
             this.panel1.Controls.Add(this.SearchMatchesButton);
             this.panel1.Controls.Add(this.ReplaceStartButton);
             this.panel1.Controls.Add(this.DoneReplaceButton);
-            this.panel1.Controls.Add(this.DonePatternButton);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.ReplaceWithTextBox);
             this.panel1.Controls.Add(this.SelectPatternComboBox);
@@ -153,6 +158,36 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1155, 80);
             this.panel1.TabIndex = 5;
+            // 
+            // LockPictureBox
+            // 
+            this.LockPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.LockPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LockPictureBox.Image = global::TextBuddy.Properties.Resources.open_lock_512;
+            this.LockPictureBox.Location = new System.Drawing.Point(1101, 3);
+            this.LockPictureBox.Name = "LockPictureBox";
+            this.LockPictureBox.Size = new System.Drawing.Size(21, 21);
+            this.LockPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LockPictureBox.TabIndex = 14;
+            this.LockPictureBox.TabStop = false;
+            this.LockPictureBox.Click += new System.EventHandler(this.LockPictureBox_Click);
+            // 
+            // FoundMatchesTextBox
+            // 
+            this.FoundMatchesTextBox.Enabled = false;
+            this.FoundMatchesTextBox.Location = new System.Drawing.Point(161, 29);
+            this.FoundMatchesTextBox.Name = "FoundMatchesTextBox";
+            this.FoundMatchesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FoundMatchesTextBox.TabIndex = 13;
+            // 
+            // FoundMatchesLabel
+            // 
+            this.FoundMatchesLabel.AutoSize = true;
+            this.FoundMatchesLabel.Location = new System.Drawing.Point(71, 33);
+            this.FoundMatchesLabel.Name = "FoundMatchesLabel";
+            this.FoundMatchesLabel.Size = new System.Drawing.Size(84, 13);
+            this.FoundMatchesLabel.TabIndex = 12;
+            this.FoundMatchesLabel.Text = "Found Matches:";
             // 
             // SearchAndGetButton
             // 
@@ -196,15 +231,6 @@
             this.DoneReplaceButton.Text = "Done";
             this.DoneReplaceButton.UseVisualStyleBackColor = true;
             // 
-            // DonePatternButton
-            // 
-            this.DonePatternButton.Location = new System.Drawing.Point(1101, 2);
-            this.DonePatternButton.Name = "DonePatternButton";
-            this.DonePatternButton.Size = new System.Drawing.Size(50, 23);
-            this.DonePatternButton.TabIndex = 7;
-            this.DonePatternButton.Text = "Done";
-            this.DonePatternButton.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -221,6 +247,7 @@
             this.ReplaceWithTextBox.Name = "ReplaceWithTextBox";
             this.ReplaceWithTextBox.Size = new System.Drawing.Size(741, 21);
             this.ReplaceWithTextBox.TabIndex = 5;
+            this.ReplaceWithTextBox.TextChanged += new System.EventHandler(this.ReplaceWithTextBox_TextChanged);
             // 
             // groupBox1
             // 
@@ -268,6 +295,7 @@
             this.PreviewModifiedRichTextBox.Size = new System.Drawing.Size(609, 444);
             this.PreviewModifiedRichTextBox.TabIndex = 0;
             this.PreviewModifiedRichTextBox.Text = "";
+            this.PreviewModifiedRichTextBox.WordWrap = false;
             // 
             // PreviewGroupBox
             // 
@@ -304,22 +332,12 @@
             // 
             this.OpenFileDialog.FileName = "OpenFileDialog";
             // 
-            // FoundMatchesLabel
+            // ImageList
             // 
-            this.FoundMatchesLabel.AutoSize = true;
-            this.FoundMatchesLabel.Location = new System.Drawing.Point(71, 33);
-            this.FoundMatchesLabel.Name = "FoundMatchesLabel";
-            this.FoundMatchesLabel.Size = new System.Drawing.Size(84, 13);
-            this.FoundMatchesLabel.TabIndex = 12;
-            this.FoundMatchesLabel.Text = "Found Matches:";
-            // 
-            // FoundMatchesTextBox
-            // 
-            this.FoundMatchesTextBox.Enabled = false;
-            this.FoundMatchesTextBox.Location = new System.Drawing.Point(161, 29);
-            this.FoundMatchesTextBox.Name = "FoundMatchesTextBox";
-            this.FoundMatchesTextBox.Size = new System.Drawing.Size(100, 20);
-            this.FoundMatchesTextBox.TabIndex = 13;
+            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
+            this.ImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImageList.Images.SetKeyName(0, "open_lock-512.png");
+            this.ImageList.Images.SetKeyName(1, "close_lock-512.png");
             // 
             // TextBuddyMainWindow
             // 
@@ -337,6 +355,7 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LockPictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.SplitContainer.Panel1.ResumeLayout(false);
             this.SplitContainer.Panel2.ResumeLayout(false);
@@ -367,7 +386,6 @@
         private System.Windows.Forms.OpenFileDialog OpenFileDialog;
         private System.Windows.Forms.Button ReplaceStartButton;
         private System.Windows.Forms.Button DoneReplaceButton;
-        private System.Windows.Forms.Button DonePatternButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox ReplaceWithTextBox;
         private System.Windows.Forms.RichTextBox PreviewOriginalRichTextBox;
@@ -377,6 +395,8 @@
         private System.Windows.Forms.Button SearchAndGetButton;
         private System.Windows.Forms.TextBox FoundMatchesTextBox;
         private System.Windows.Forms.Label FoundMatchesLabel;
+        private System.Windows.Forms.ImageList ImageList;
+        private System.Windows.Forms.PictureBox LockPictureBox;
     }
 }
 

@@ -63,9 +63,29 @@ namespace TextBuddy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap open_file {
+        internal static System.Drawing.Bitmap close_lock_512 {
             get {
-                object obj = ResourceManager.GetObject("open_file", resourceCulture);
+                object obj = ResourceManager.GetObject("close_lock_512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Open_document {
+            get {
+                object obj = ResourceManager.GetObject("Open_document", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_lock_512 {
+            get {
+                object obj = ResourceManager.GetObject("open_lock_512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,7 +113,7 @@ namespace TextBuddy.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Save_file {
             get {
-                object obj = ResourceManager.GetObject("Save-file", resourceCulture);
+                object obj = ResourceManager.GetObject("Save_file", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

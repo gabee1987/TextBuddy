@@ -46,6 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IOManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RegexManager.cs" />
     <Compile Include="TextBuddyMainWindow.cs">
       <SubType>Form</SubType>
@@ -57,14 +62,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="TextBuddyMainWindow.resx">
       <DependentUpon>TextBuddyMainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,9 +82,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\open-file.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\search-for-file.png" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +89,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\close_lock-512.png" />
+    <None Include="Resources\open_lock-512.png" />
+    <None Include="Resources\Open-document.png" />
     <Content Include="Resources\regexName.txt" />
     <Content Include="Resources\regexPatterns.txt" />
     <None Include="Resources\Save-file.png" />

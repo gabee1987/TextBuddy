@@ -51,7 +51,10 @@ namespace TextBuddy
 
         private void ReplaceStartButton_Click(object sender, EventArgs e)
         {
-
+            string searchPattern = RegexPatternTextBox.Text;
+            string replacePattern = ReplaceWithTextBox.Text;
+            string document = PreviewOriginalRichTextBox.Text;
+            PreviewModifiedRichTextBox.Text = RegexManager.ReplaceFoundMatches(document, searchPattern, replacePattern);
         }
 
         private void SelectPatternComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,6 +106,36 @@ namespace TextBuddy
                 }
                 PreviewModifiedRichTextBox.Text = foundMatchesString;
                 FoundMatchesTextBox.Text = matchCount.ToString();
+            }
+        }
+
+        private void RegexPatternTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchAndGetButton.PerformClick();
+            }
+        }
+
+        private void ReplaceWithTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ReplaceWithTextBox.Text.Length > 0)
+            {
+                ReplaceStartButton.Enabled = true;
+            }
+        }
+
+        private void LockPictureBox_Click(object sender, EventArgs e)
+        {
+            Image image = Image.FromFile("open_lock-512.png");
+            if (RegexPatternTextBox.Enabled == true)
+            {
+                LockPictureBox.Image = Properties.Resources.close_lock_512;
+                RegexPatternTextBox.Enabled = false;
+            }
+            else
+            {
+                RegexPatternTextBox.Enabled = true;
             }
         }
     }

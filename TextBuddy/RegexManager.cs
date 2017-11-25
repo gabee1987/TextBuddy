@@ -12,8 +12,7 @@ namespace TextBuddy
         public static List<string> SearchAndGetMatches(string input, string inputPattern)
         {
             List<string> foundMatches = new List<string>();
-            string pattern = inputPattern;
-            Regex regex = new Regex(pattern);
+            Regex regex = new Regex(inputPattern);
             MatchCollection matches = regex.Matches(input);
             //Match match = regex.Match(input);
             foreach (Match match in matches)
@@ -21,6 +20,19 @@ namespace TextBuddy
                 foundMatches.Add(match.Value.ToString());
             }
             return foundMatches;
+        }
+
+        public static string ReplaceFoundMatches(string input, string searchPattern, string replacePattern)
+        {
+            try
+            {
+                return Regex.Replace(input, searchPattern, replacePattern, RegexOptions.None, TimeSpan.FromMilliseconds(150));
+            }
+            catch (RegexMatchTimeoutException re)
+            {
+                Console.WriteLine(re);
+                return input;
+            }
         }
 
         private static string ReformatDate(string dateInput)
