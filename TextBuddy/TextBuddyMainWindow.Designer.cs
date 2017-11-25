@@ -33,7 +33,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.OpenFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchForFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SelectPatternComboBox = new System.Windows.Forms.ComboBox();
             this.SelectPatternLabel = new System.Windows.Forms.Label();
             this.RegexPatternTextBox = new System.Windows.Forms.TextBox();
@@ -60,6 +60,7 @@
             this.DateFormatComboBox = new System.Windows.Forms.ComboBox();
             this.DateFormatlabel = new System.Windows.Forms.Label();
             this.ConvertDateFormatButton = new System.Windows.Forms.Button();
+            this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LockPictureBox)).BeginInit();
@@ -76,7 +77,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenFileToolStripMenuItem,
             this.searchForFileToolStripMenuItem,
-            this.saveFileToolStripMenuItem});
+            this.SaveFileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1185, 24);
@@ -98,12 +99,13 @@
             this.searchForFileToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
             this.searchForFileToolStripMenuItem.Text = "Search for File";
             // 
-            // saveFileToolStripMenuItem
+            // SaveFileToolStripMenuItem
             // 
-            this.saveFileToolStripMenuItem.Image = global::TextBuddy.Properties.Resources.Save_file;
-            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            this.saveFileToolStripMenuItem.Text = "Save File";
+            this.SaveFileToolStripMenuItem.Image = global::TextBuddy.Properties.Resources.Save_file;
+            this.SaveFileToolStripMenuItem.Name = "SaveFileToolStripMenuItem";
+            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.SaveFileToolStripMenuItem.Text = "Save File";
+            this.SaveFileToolStripMenuItem.Click += new System.EventHandler(this.SaveFileToolStripMenuItem_Click);
             // 
             // SelectPatternComboBox
             // 
@@ -372,6 +374,11 @@
             this.ConvertDateFormatButton.UseVisualStyleBackColor = true;
             this.ConvertDateFormatButton.Click += new System.EventHandler(this.ConvertDateFormatButton_Click);
             // 
+            // SaveFileDialog
+            // 
+            this.SaveFileDialog.DefaultExt = "txt";
+            this.SaveFileDialog.Filter = "Text File|*.txt";
+            // 
             // TextBuddyMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,7 +431,7 @@
         private System.Windows.Forms.RichTextBox PreviewOriginalRichTextBox;
         private System.Windows.Forms.RichTextBox PreviewModifiedRichTextBox;
         private System.Windows.Forms.Button SearchMatchesButton;
-        private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveFileToolStripMenuItem;
         private System.Windows.Forms.Button SearchAndGetButton;
         private System.Windows.Forms.TextBox FoundMatchesTextBox;
         private System.Windows.Forms.Label FoundMatchesLabel;
@@ -433,6 +440,7 @@
         private System.Windows.Forms.ComboBox DateFormatComboBox;
         private System.Windows.Forms.Label DateFormatlabel;
         private System.Windows.Forms.Button ConvertDateFormatButton;
+        private System.Windows.Forms.SaveFileDialog SaveFileDialog;
     }
 }
 

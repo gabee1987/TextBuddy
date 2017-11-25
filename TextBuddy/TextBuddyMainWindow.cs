@@ -173,5 +173,20 @@ namespace TextBuddy
                 PreviewModifiedRichTextBox.Text = RegexManager.FormatDate(document, pattern, dateFormat);
             }
         }
+
+        private void SaveFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PreviewModifiedRichTextBox.Text.Length > 0)
+            {
+                string documentToSave = PreviewModifiedRichTextBox.Text;
+                DialogResult resDialog = SaveFileDialog.ShowDialog();
+                if (resDialog.ToString() == "OK")
+                {
+                    string savedFileName = SaveFileDialog.FileName;
+                    IOManager.WriteToFile(savedFileName, documentToSave);
+                    MessageBox.Show("File successfully saved.", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
     }
 }
