@@ -35,6 +35,9 @@ namespace TextBuddy
                 this.Text += "    Opened File: " + openedFileName;
                 string openedFile = IOManager.OpenTextFile(openedFileName);
                 PreviewOriginalRichTextBox.Text = openedFile;
+            }
+            else if (DateFormatComboBox.SelectedIndex > 0)
+            {
                 ConvertDateFormatButton.Enabled = true;
             }
         }
@@ -169,7 +172,8 @@ namespace TextBuddy
                 string pattern = RegexPatternTextBox.Text;
                 string document = PreviewOriginalRichTextBox.Text;
                 string dateFormat = DateFormatComboBox.SelectedItem.ToString();
-                
+
+                PreviewModifiedRichTextBox.Clear();
                 PreviewModifiedRichTextBox.Text = RegexManager.FormatDate(document, pattern, dateFormat);
             }
         }
@@ -186,6 +190,18 @@ namespace TextBuddy
                     IOManager.WriteToFile(savedFileName, documentToSave);
                     MessageBox.Show("File successfully saved.", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+        }
+
+        private void DateFormatComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PreviewOriginalRichTextBox.Text.Length > 0)
+            {
+                ConvertDateFormatButton.Enabled = true;
+            }
+            else
+            {
+                ConvertDateFormatButton.Enabled = true;
             }
         }
     }

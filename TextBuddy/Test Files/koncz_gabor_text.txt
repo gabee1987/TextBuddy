@@ -1,0 +1,6 @@
+Name: Koncz Gábor
+BirthDate: 31/03/1987
+Age: 30
+Gender: Male
+Phone number: +36 30 986-7688
+Email address: gabee1987@gmail.com

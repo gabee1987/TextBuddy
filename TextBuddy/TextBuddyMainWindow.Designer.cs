@@ -39,6 +39,9 @@
             this.RegexPatternTextBox = new System.Windows.Forms.TextBox();
             this.AddPatternLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ConvertDateFormatButton = new System.Windows.Forms.Button();
+            this.DateFormatComboBox = new System.Windows.Forms.ComboBox();
+            this.DateFormatlabel = new System.Windows.Forms.Label();
             this.LockPictureBox = new System.Windows.Forms.PictureBox();
             this.FoundMatchesTextBox = new System.Windows.Forms.TextBox();
             this.FoundMatchesLabel = new System.Windows.Forms.Label();
@@ -57,9 +60,6 @@
             this.OriginalLabel = new System.Windows.Forms.Label();
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
-            this.DateFormatComboBox = new System.Windows.Forms.ComboBox();
-            this.DateFormatlabel = new System.Windows.Forms.Label();
-            this.ConvertDateFormatButton = new System.Windows.Forms.Button();
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -166,6 +166,35 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1155, 80);
             this.panel1.TabIndex = 5;
+            // 
+            // ConvertDateFormatButton
+            // 
+            this.ConvertDateFormatButton.Enabled = false;
+            this.ConvertDateFormatButton.Location = new System.Drawing.Point(144, 57);
+            this.ConvertDateFormatButton.Name = "ConvertDateFormatButton";
+            this.ConvertDateFormatButton.Size = new System.Drawing.Size(117, 23);
+            this.ConvertDateFormatButton.TabIndex = 16;
+            this.ConvertDateFormatButton.Text = "Convert Date Format";
+            this.ConvertDateFormatButton.UseVisualStyleBackColor = true;
+            this.ConvertDateFormatButton.Click += new System.EventHandler(this.ConvertDateFormatButton_Click);
+            // 
+            // DateFormatComboBox
+            // 
+            this.DateFormatComboBox.FormattingEnabled = true;
+            this.DateFormatComboBox.Location = new System.Drawing.Point(84, 31);
+            this.DateFormatComboBox.Name = "DateFormatComboBox";
+            this.DateFormatComboBox.Size = new System.Drawing.Size(177, 21);
+            this.DateFormatComboBox.TabIndex = 14;
+            this.DateFormatComboBox.SelectedIndexChanged += new System.EventHandler(this.DateFormatComboBox_SelectedIndexChanged);
+            // 
+            // DateFormatlabel
+            // 
+            this.DateFormatlabel.AutoSize = true;
+            this.DateFormatlabel.Location = new System.Drawing.Point(16, 34);
+            this.DateFormatlabel.Name = "DateFormatlabel";
+            this.DateFormatlabel.Size = new System.Drawing.Size(65, 13);
+            this.DateFormatlabel.TabIndex = 15;
+            this.DateFormatlabel.Text = "Date Format";
             // 
             // LockPictureBox
             // 
@@ -345,34 +374,6 @@
             this.ImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.ImageList.Images.SetKeyName(0, "open_lock-512.png");
             this.ImageList.Images.SetKeyName(1, "close_lock-512.png");
-            // 
-            // DateFormatComboBox
-            // 
-            this.DateFormatComboBox.FormattingEnabled = true;
-            this.DateFormatComboBox.Location = new System.Drawing.Point(84, 31);
-            this.DateFormatComboBox.Name = "DateFormatComboBox";
-            this.DateFormatComboBox.Size = new System.Drawing.Size(177, 21);
-            this.DateFormatComboBox.TabIndex = 14;
-            // 
-            // DateFormatlabel
-            // 
-            this.DateFormatlabel.AutoSize = true;
-            this.DateFormatlabel.Location = new System.Drawing.Point(16, 34);
-            this.DateFormatlabel.Name = "DateFormatlabel";
-            this.DateFormatlabel.Size = new System.Drawing.Size(65, 13);
-            this.DateFormatlabel.TabIndex = 15;
-            this.DateFormatlabel.Text = "Date Format";
-            // 
-            // ConvertDateFormatButton
-            // 
-            this.ConvertDateFormatButton.Enabled = false;
-            this.ConvertDateFormatButton.Location = new System.Drawing.Point(144, 57);
-            this.ConvertDateFormatButton.Name = "ConvertDateFormatButton";
-            this.ConvertDateFormatButton.Size = new System.Drawing.Size(117, 23);
-            this.ConvertDateFormatButton.TabIndex = 16;
-            this.ConvertDateFormatButton.Text = "Convert Date Format";
-            this.ConvertDateFormatButton.UseVisualStyleBackColor = true;
-            this.ConvertDateFormatButton.Click += new System.EventHandler(this.ConvertDateFormatButton_Click);
             // 
             // SaveFileDialog
             // 
