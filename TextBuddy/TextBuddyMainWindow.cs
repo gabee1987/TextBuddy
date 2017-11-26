@@ -100,6 +100,12 @@ namespace TextBuddy
             string documentToSearch = PreviewOriginalRichTextBox.Text;
             string pattern = RegexPatternTextBox.Text;
             FoundMatchesTextBox.Text = RegexManager.CountFoundMatches(documentToSearch, pattern).ToString();
+
+            // Highlight Text
+            if (HighlightCheckBox.Checked)
+            {
+                HighLightText(PreviewOriginalRichTextBox, pattern, Color.YellowGreen);
+            }
         }
 
         private void PreviewOriginalRichTextBox_TextChanged(object sender, EventArgs e)
@@ -203,6 +209,28 @@ namespace TextBuddy
             {
                 ConvertDateFormatButton.Enabled = true;
             }
+        }
+
+        private void HighLightText(RichTextBox myRtb, string word, Color color)
+        {
+
+            if (word == string.Empty)
+                return;
+
+            int s_start = myRtb.SelectionStart, startIndex = 0, index;
+
+            while ((index = myRtb.Text.IndexOf(word, startIndex)) != -1)
+            {
+                myRtb.Select(index, word.Length);
+                //myRtb.SelectionColor = color;
+                myRtb.SelectionBackColor = color;
+
+                startIndex = index + word.Length;
+            }
+
+            myRtb.SelectionStart = s_start;
+            myRtb.SelectionLength = 0;
+            myRtb.SelectionColor = Color.Black;
         }
     }
 }

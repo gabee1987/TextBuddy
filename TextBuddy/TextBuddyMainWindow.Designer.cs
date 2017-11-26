@@ -61,6 +61,7 @@
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.HighlightCheckBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LockPictureBox)).BeginInit();
@@ -145,6 +146,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.HighlightCheckBox);
             this.panel1.Controls.Add(this.ConvertDateFormatButton);
             this.panel1.Controls.Add(this.DateFormatComboBox);
             this.panel1.Controls.Add(this.DateFormatlabel);
@@ -211,15 +213,16 @@
             // FoundMatchesTextBox
             // 
             this.FoundMatchesTextBox.Enabled = false;
-            this.FoundMatchesTextBox.Location = new System.Drawing.Point(654, 57);
+            this.FoundMatchesTextBox.Location = new System.Drawing.Point(709, 55);
+            this.FoundMatchesTextBox.Multiline = true;
             this.FoundMatchesTextBox.Name = "FoundMatchesTextBox";
-            this.FoundMatchesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FoundMatchesTextBox.Size = new System.Drawing.Size(100, 21);
             this.FoundMatchesTextBox.TabIndex = 13;
             // 
             // FoundMatchesLabel
             // 
             this.FoundMatchesLabel.AutoSize = true;
-            this.FoundMatchesLabel.Location = new System.Drawing.Point(564, 61);
+            this.FoundMatchesLabel.Location = new System.Drawing.Point(619, 59);
             this.FoundMatchesLabel.Name = "FoundMatchesLabel";
             this.FoundMatchesLabel.Size = new System.Drawing.Size(84, 13);
             this.FoundMatchesLabel.TabIndex = 12;
@@ -380,6 +383,16 @@
             this.SaveFileDialog.DefaultExt = "txt";
             this.SaveFileDialog.Filter = "Text File|*.txt";
             // 
+            // HighlightCheckBox
+            // 
+            this.HighlightCheckBox.AutoSize = true;
+            this.HighlightCheckBox.Location = new System.Drawing.Point(354, 54);
+            this.HighlightCheckBox.Name = "HighlightCheckBox";
+            this.HighlightCheckBox.Size = new System.Drawing.Size(111, 17);
+            this.HighlightCheckBox.TabIndex = 17;
+            this.HighlightCheckBox.Text = "Highlight Matches";
+            this.HighlightCheckBox.UseVisualStyleBackColor = true;
+            // 
             // TextBuddyMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -442,6 +455,7 @@
         private System.Windows.Forms.Label DateFormatlabel;
         private System.Windows.Forms.Button ConvertDateFormatButton;
         private System.Windows.Forms.SaveFileDialog SaveFileDialog;
+        private System.Windows.Forms.CheckBox HighlightCheckBox;
     }
 }
 
